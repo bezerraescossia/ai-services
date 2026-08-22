@@ -1,0 +1,49 @@
+[project]
+name = "ai-services"
+version = "0.1.0"
+description = "Monolith of independently deployable ML/LLM services (starting with Corrective RAG)"
+readme = "README.md"
+requires-python = ">=3.13"
+authors = [
+    { name = "Rafael B. Escóssia", email = "bezerraescossia@gmail.com" },
+]
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=6",
+    "ruff>=0.14",
+    "mypy>=1.14",
+    "pre-commit>=4",
+    "taskipy>=1.14",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.13"
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.taskipy.tasks]
+test = "pytest"
+test-cov = "pytest --cov --cov-report=term-missing"
+lint = "ruff check ."
+format = "ruff format ."
+typecheck = "mypy ."
+check = "task lint && task typecheck && task test"
+precommit = "pre-commit run --all-files"
