@@ -42,7 +42,7 @@ Vanilla RAG trusts whatever its top-k retrieval returns, even when it's irreleva
 
 | ID | Feature Name | Type | Goal | Priority | Depends On | Status |
 |---|---|---|---|---|---|---|
-| BDU1 | Corpus & Use-Case Scoping | Feature | Define the target document corpus, primary user query types, and what distinguishes a "relevant" from an "irrelevant" retrieval for this use case | P1 | — | Specified — [spec](bdu01-corpus-scoping/spec.md) |
+| BDU1 | Corpus & Use-Case Scoping | Feature | Define the target document corpus, primary user query types, and what distinguishes a "relevant" from an "irrelevant" retrieval for this use case | P1 | — | Implemented — [spec](bdu01-corpus-scoping/spec.md) |
 
 **Risks & QA**
 
@@ -56,8 +56,8 @@ Vanilla RAG trusts whatever its top-k retrieval returns, even when it's irreleva
 
 | ID | Feature Name | Type | Goal | Priority | Depends On | Status |
 |---|---|---|---|---|---|---|
-| DP1 | Document Ingestion & Indexing Pipeline | Feature | Chunk, embed, and index the scoped corpus into a vector store, versioning every corpus snapshot with DVC | P1 | BDU1 | Specified — [spec](dp01-document-ingestion/spec.md) |
-| DP2 | Corpus PII Scrubbing & Flagging | QA | Scan ingested documents for personal data before indexing and flag/redact per LGPD before the corpus is used downstream | P1 | DP1 | Not Started |
+| DP1 | Document Ingestion & Indexing Pipeline | Feature | Chunk, embed, and index the scoped corpus into a vector store, versioning every corpus snapshot with DVC | P1 | BDU1 | Implemented — [spec](dp01-document-ingestion/spec.md) |
+| DP2 | Corpus PII Scrubbing & Flagging | QA | Scan ingested documents for personal data before indexing and flag/redact per LGPD before the corpus is used downstream | P1 | DP1 | Specified — [spec](dp02-pii-scrubbing/spec.md) |
 
 **Risks & QA**
 
@@ -152,4 +152,4 @@ BDU1 → DP1 → DP2 → MOD1 → MOD2 → MOD3 → MOD4 → EVAL1 → EVAL2 →
 
 ## Phase Reports
 
-*(none yet — generated once a phase's backlog is fully implemented)*
+- [Business & Data Understanding](reports/business-data-understanding-report.md) — Go (2026-08-22)

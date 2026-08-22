@@ -4,8 +4,9 @@ Monolith of independently deployable ML/LLM services (starting with Corrective R
 
 ## Structure
 
-`src/` holds one directory per initiative/epic (e.g. `src/corrective-rag/`,
-`src/recommendation-system/`) — see [`src/README.md`](src/README.md).
+`src/` holds one directory per initiative/epic (e.g. `src/corrective_rag/`,
+`src/recommendation_system/`) — underscored, since these are imported as
+Python packages, not just directory names.
 
 ## Development
 
