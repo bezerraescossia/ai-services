@@ -53,7 +53,7 @@ source = ["src"]
 
 [tool.taskipy.tasks]
 test = "pytest"
-test-cov = "pytest --cov --cov-report=term-missing"
+test-cov = "pytest --cov --cov-report=json"
 lint = "ruff check ."
 format = "ruff format ."
 typecheck = "mypy ."

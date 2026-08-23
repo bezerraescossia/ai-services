@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Document Ingestion & Indexing Pipeline
+# Specification Quality Checklist: Corpus PII Scrubbing & Flagging
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2026-08-22
@@ -42,6 +42,7 @@
 
 ## Notes
 
-- SC-003/SC-004 are "named eval set" via the corpus_version/ingestion run itself rather than a held-out labeled set — appropriate here since this is a data pipeline, not a predictive model; EVAL1/EVAL2 own model-quality evaluation against a held-out set.
-- Zero [NEEDS CLARIFICATION] markers at draft time: BDU1's resolution (corpus source, topic, volume) left no blocking ambiguity for this feature; remaining implementation choices (chunk size, embedding model, vector store) are correctly deferred to `plan.md`, not the spec.
-- Clarify sub-stage resolved one architecturally material question (DP1/DP2 publish-gate timing), now reflected in FR-004/FR-006, the shared `Document Chunk.retrievable` field, and `epic.md`'s MOD1 dependency row.
+- Both draft-time [NEEDS CLARIFICATION] markers (flaggable-category scope; redact-vs-quarantine resolution) were resolved with the user before this checklist was written: contact/identifier data only (never a person's name alone), auto-redact-and-publish with no manual review step.
+- SC-003's eval set is synthetic/planted rather than naturally-occurring, since the corpus is expected by BDU1/DP1 to contain no natural positive examples of the resolved flaggable categories — documented as an accepted deviation in Risk Assessment, not glossed over.
+- "Drift/unavailability" edge cases are less applicable here (single batch pass, not an online service) — the equivalent model-specific failure modes covered instead are over-flagging (User Story 2), under-flagging (Risk Assessment), and ambiguous-token handling (Edge Cases).
+- Clarify sub-stage resolved three further questions, now reflected in FR-009/Edge Cases (abort-whole-run on detector error), SC-005 (token-shaped false-positive check beyond the subject-biography case), and Assumptions (manually triggered, not auto-chained after DP1).
