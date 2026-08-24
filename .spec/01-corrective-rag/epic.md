@@ -57,7 +57,7 @@ Vanilla RAG trusts whatever its top-k retrieval returns, even when it's irreleva
 | ID | Feature Name | Type | Goal | Priority | Depends On | Status |
 |---|---|---|---|---|---|---|
 | DP1 | Document Ingestion & Indexing Pipeline | Feature | Chunk, embed, and index the scoped corpus into a vector store, versioning every corpus snapshot with DVC | P1 | BDU1 | Implemented — [spec](dp01-document-ingestion/spec.md) |
-| DP2 | Corpus PII Scrubbing & Flagging | QA | Scan ingested documents for personal data before indexing and flag/redact per LGPD before the corpus is used downstream | P1 | DP1 | Specified — [spec](dp02-pii-scrubbing/spec.md) |
+| DP2 | Corpus PII Scrubbing & Flagging | QA | Scan ingested documents for personal data before indexing and flag/redact per LGPD before the corpus is used downstream | P1 | DP1 | Implemented — [spec](dp02-pii-scrubbing/spec.md) |
 
 **Risks & QA**
 
