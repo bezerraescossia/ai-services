@@ -28,12 +28,19 @@ def ensure_collection(client: QdrantClient) -> None:
     )
 
 
-def _point_id(chunk_id: str) -> str:
-    return str(uuid.uuid5(uuid.NAMESPACE_URL, chunk_id))
+def _point_id(corpus_version: str, chunk_id: str) -> str:
+    """Salt with corpus_version so identical content in two corpus_versions never collides.
+
+    Without this, two corpus_versions built from byte-identical article content (e.g. an
+    unchanged Wikipedia article re-fetched later) produce the same chunk_id and thus the
+    same Qdrant point — silently overwriting one corpus_version's indexed/cleared state
+    with the other's, including resetting retrievable back to DP1's unpublished default.
+    """
+    return str(uuid.uuid5(uuid.NAMESPACE_URL, f"{corpus_version}:{chunk_id}"))
 
 
 def _point_struct(record: ChunkRecord) -> qmodels.PointStruct:
-    point_id = _point_id(record.chunk_id)
+    point_id = _point_id(record.corpus_version, record.chunk_id)
     return qmodels.PointStruct(
         id=point_id,
         vector=record.embedding,

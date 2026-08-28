@@ -18,6 +18,10 @@ venv/
 .coverage.*
 htmlcov/
 
+# MLflow local tracking store
+mlruns/
+mlflow.db
+
 # Env
 .env
 .env.*

@@ -71,7 +71,7 @@ Vanilla RAG trusts whatever its top-k retrieval returns, even when it's irreleva
 
 | ID | Feature Name | Type | Goal | Priority | Depends On | Status |
 |---|---|---|---|---|---|---|
-| MOD1 | Baseline Retriever | Feature | Embed queries and retrieve top-k candidate chunks from the indexed corpus | P1 | DP1, DP2 | Specified — [spec](mod01-baseline-retriever/spec.md) |
+| MOD1 | Baseline Retriever | Feature | Embed queries and retrieve top-k candidate chunks from the indexed corpus | P1 | DP1, DP2 | Implemented — [spec](mod01-baseline-retriever/spec.md) |
 | MOD2 | Retrieval Relevance Evaluator | Feature | Score each retrieved chunk's relevance to the query and classify overall retrieval confidence | P1 | MOD1 | Not Started |
 | MOD3 | Fallback Web-Search Retrieval | Feature | When evaluator confidence falls below threshold, retrieve supplementary context from a web-search source instead | P1 | MOD2 | Not Started |
 | MOD4 | Grounded Answer Generation | Feature | Generate an answer conditioned only on evaluator-approved and/or fallback context; hedge or decline when neither source is sufficient | P1 | MOD2, MOD3 | Not Started |
